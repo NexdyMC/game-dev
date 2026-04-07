@@ -21,26 +21,40 @@ Main (Node2D)
 ```
 ---
 
-## ⚙️ Pengaturan Inspector
+## ⚙️ Pengaturan Node 2D & Inspector
 
-### 1. Sprite2D (Visual)
-Agar gambar tidak terlihat buram (blur) saat di-zoom, gunakan settingan berikut:
-- **Texture:** Masukkan asset gambar Anda.
-- **CanvasItem > Texture > Filter:** Pilih `Nearest` (Sangat disarankan untuk Pixel Art).
-- **Offset > Centered:** `On`.
+### 1. Node2D (Root)
+Sebagai node utama (Parent), pastikan setting berikut diperhatikan:
+* **Transform > Position:** `(0, 0)` agar koordinat anak node tetap konsisten.
+* **Process > Mode:** `Inherit` (Default).
 
-### 2. Project Settings
-Atur resolusi layar di **Project > Project Settings > Display > Window**:
-- **Viewport Width:** `1152`
-- **Viewport Height:** `648`
-- **Stretch Mode:** `canvas_items`
-- **Aspect:** `keep`
+### 2. Sprite2D (Visual Optimization)
+Agar gambar *pixel art* tidak terlihat buram (blur), gunakan konfigurasi berikut di Inspector:
+* **Texture:** Masukkan asset gambar Anda.
+* **CanvasItem > Texture > Filter:** Ubah menjadi **`Nearest`**.
+* **Offset > Centered:** `On`.
+* **Transform > Position:** Sesuaikan dengan titik tengah resolusi (Contoh: `576, 324`).
+
+### 3. Camera2D (Main Camera)
+* **Enabled:** Pastikan dalam kondisi `On`.
+* **Position:** Atur di tengah layar untuk memulai.
+* **Script:** Tempelkan script pergerakan di sini untuk mengontrol `position.x`.
+
+---
+
+## 🖥️ Project Settings (Resolution)
+
+Atur resolusi layar di **Project > Project Settings > Display > Window** untuk hasil terbaik:
+* **Viewport Width:** `1152`
+* **Viewport Height:** `648`
+* **Stretch > Mode:** `canvas_items` (Menjaga ketajaman elemen 2D).
+* **Stretch > Aspect:** `keep` (Menghindari distorsi gambar).
 
 ---
 
 ## 📜 Logika Script (GDScript)
 
-Script ini ditempelkan pada node **Camera2D**. Menggunakan variabel `@export` sehingga kecepatan dapat diubah langsung melalui editor tanpa menyentuh kode.
+Script ini ditempelkan pada node **Camera2D**. Menggunakan variabel `@export` sehingga kecepatan dapat diatur langsung melalui Inspector.
 
 ```gdscript
 extends Camera2D
