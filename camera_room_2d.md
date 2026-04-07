@@ -12,11 +12,13 @@ Repositori ini berisi implementasi dasar pembuatan game 2D di **Godot Engine v4.
 ## 🛠 Struktur Scene (Node Tree)
 
 Penyusunan node dilakukan secara hierarkis untuk memastikan fungsionalitas yang tepat:
-
-* **Node2D** (Main/World)
-    * **Sprite2D** (Background/Assets)
-    * **Camera2D** (MainCamera) -> *Tempat script ditempelkan*
-
+```
+Main (Node2D)
+├── Background (Sprite2D)
+│   └── Transform: Position (576, 324)
+└── MainCamera (Camera2D)
+└── Script: "res://edge_scroll.gd"
+```
 ---
 
 ## ⚙️ Pengaturan Inspector
